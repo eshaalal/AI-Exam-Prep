@@ -7,3 +7,13 @@ export const USER_TABLE = pgTable("users", {
     email: varchar("email", { length: 255 }).notNull(),
     isMember: boolean("is_member").default(false),
 });
+export const STUDY_MATERIAL_TABLE = pgTable("studyMaterial", {
+    id:serial().primaryKey(),
+    courseId:varchar().notNull(),
+    courseType:varchar().notNull(),
+    topic:varchar().notNull(),
+    difficultyLevel:varchar().default('Easy'),
+    courseLayout:varchar().default('Easy'),
+    createdBy:varchar().notNull(),
+    status:varchar().default('Generating')
+})

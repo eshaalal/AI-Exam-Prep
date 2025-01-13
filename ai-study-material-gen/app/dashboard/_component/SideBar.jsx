@@ -27,13 +27,15 @@ function SideBar() {
     ]
     const path=usePathname();
   return (
-    <div className="h-screen shadow-md p-4"> {/* Added padding for better layout */}
+    <div className="h-screen shadow-md p-5"> {/* Added padding for better layout */}
       <div className="flex gap-2 items-center"> {/* Corrected flex-gap-2 */}
         <Image src="/logo.svg" alt="logo" width={40} height={40} />
         <h2 className="font-bold text-2xl">AI Exam Prep</h2> {/* Changed text-2 to text-2xl */}
       </div>
       <div className="mt-10">
+      <Link href={'/create'} className="w-full">
         <Button className="w-full">+ Create New</Button>
+        </Link>
         <div>
             {MenuList.map((item, index) => (
                 <div key={index} className={`flex items-center gap-5 p-3 hover:bg-slate-200 rounded-lg cursor-pointer mt-3 ${path==item.path && 'bg-slate-200'}`}> {/* Corrected flex-gap-5 */}
