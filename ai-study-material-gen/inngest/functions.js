@@ -1,5 +1,5 @@
 import { inngest } from "./client";
-import { USER_TABLE } from "../configs/schema";
+import { CHAPTER_NOTES_TABLE, USER_TABLE } from "../configs/schema";
 import { db } from "../configs/db";
 
 export const helloWorld = inngest.createFunction(

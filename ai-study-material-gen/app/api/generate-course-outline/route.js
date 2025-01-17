@@ -38,6 +38,8 @@ export async function POST(req) {
             courseLayout: JSON.stringify(aiResult)
         }).returning();
         
+       
+
         return NextResponse.json({ result: dbResult[0] });
     } catch (error) {
         console.error('Error:', error);
