@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid';
 function Create() {
   const [step, setStep] = useState(0);
   const[formData,setFormData]=useState([]);
-  const user=useUser();
+  const {user}=useUser();
     const handleUserInput=(fieldName,fieldValue)=>{
         setFormData(prev=>({
             ...prev,
@@ -18,21 +18,15 @@ function Create() {
         }))
         console.log(formData);
     }
-    const GenerateCourseOutline = async () => {
-      try {
-          const courseId = uuidv4();
-          const result = await axios.post('/api/generate-course-outline', {
-              courseId: courseId,
-              ...formData,
-              createdBy: user?.primaryEmailAddress?.emailAddress
-          });
-          console.log(result);
-          // Handle success (e.g., redirect or show success message)
-      } catch (error) {
-          console.error('Error generating course outline:', error.response?.data || error.message);
-          // Handle error (e.g., show error message to user)
-      }
-  };
+    const GenerateCourseOutline=async()=>{
+      const courseId=uuidv4();
+      const result= await axios.post('/api/generate-course-outline',{
+        courseId:courseId,
+        ...formData,
+        createdBy:user?.primaryEmailAddress?.emailAddress
+      });
+      console.log(result);
+    }
   return (
     <div className="flex flex-col items-center p-5 md:px-24 lg:px-36 mt-20">
       <h2 className="font-bold text-4xl text-primary">Start Building Your Personal Study Material</h2>
